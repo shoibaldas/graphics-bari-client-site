@@ -54,8 +54,8 @@ const Header = () => {
                                             Profile
                                         </a>
                                     </li>
+                                    <li><Link to='/addservice'>Add Service</Link></li>
                                     <li><Link to='/'>My Reviews</Link></li>
-                                    <li><Link to='/'>Add Service</Link></li>
                                     <li><Link>Logout</Link></li>
                                 </ul>
                             </div>
