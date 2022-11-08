@@ -16,14 +16,12 @@ const Header = () => {
     </>
 
     return (
-        <div className='max-w-screen-lg mx-auto'>
+        <div className='max-w-screen-xl mx-auto'>
             <div className="navbar p-4 h-24 mb-8 bg-base-100">
                 <div className="flex-1">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            {/* 
-                             */}
-                            <i class="fa-solid fa-bars"></i>
+                            <i className="fa-solid fa-bars"></i>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             {menuItems}
