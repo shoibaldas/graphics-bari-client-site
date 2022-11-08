@@ -9,6 +9,7 @@ import About from '../../pages/About/About';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddService from '../../pages/AddService/AddService';
 import ServicesDemo from '../../pages/Home/ServicesDemo/ServicesDemo';
+import AllServices from '../../pages/Services/AllServices';
 
 export const routes = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>
+            },
+            {
+                path: '/allservices',
+                element: <AllServices></AllServices>
             },
             {
                 path: '/services/:id',
