@@ -8,8 +8,8 @@ import Signup from '../../pages/Signup/Signup';
 import About from '../../pages/About/About';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddService from '../../pages/AddService/AddService';
-import ServicesDemo from '../../pages/Home/ServicesDemo/ServicesDemo';
 import AllServices from '../../pages/Services/AllServices';
+import ServiceDetails from '../../pages/Services/ServiceDetails';
 
 export const routes = createBrowserRouter([
     {
@@ -37,12 +37,13 @@ export const routes = createBrowserRouter([
                 element: <Signup></Signup>
             },
             {
-                path: '/allservices',
+                path: '/services',
                 element: <AllServices></AllServices>
             },
             {
-                path: '/services/:id',
-                element: <ServicesDemo></ServicesDemo>
+                path: '/services/:id/details',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
                 path: '/addservice',

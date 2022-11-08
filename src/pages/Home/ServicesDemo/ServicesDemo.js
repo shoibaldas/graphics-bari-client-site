@@ -26,7 +26,7 @@ const ServicesDemo = () => {
                     }
                 </div>
                 <div className='my-8'>
-                    <Link to='/allservices' className='outline outline-offset-2 outline-1 rounded px-6 py-2 border-sky-700 text-sky-700 font-semibold hover:bg-sky-700 hover:text-gray-100 hover:outline-none ease-in duration-300'>See All</Link>
+                    <Link to='/services' className='outline outline-offset-2 outline-1 rounded px-6 py-2 border-sky-700 text-sky-700 font-semibold hover:bg-sky-700 hover:text-gray-100 hover:outline-none ease-in duration-300'>See All</Link>
                 </div>
             </div>
         </div>
