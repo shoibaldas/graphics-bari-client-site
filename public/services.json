@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Logo & Brand Identity",
+        "img": "[img]https://i.ibb.co/XyfYCnY/Brand-Identity.jpg[/img]",
+        "price": "40.79",
+        "description": "Identity and Logo design is based around the visual devices used within a company, usually assembled within a set of guidelines. These guidelines that make up an identity usually administer how the identity is applied throughout a variety of mediums, using approved color palettes, fonts, layouts, measurements and so forth. These guidelines ensure that the identity of the company is kept coherent, which in turn, allows the brand as a whole, to be recognizable. A logo is not your brand, nor is it your identity. Logo design, identity design and branding all have different roles, that together, form a perceived image for a business or product which forms a relationship with the users."
+    },
+    {
+        "title": "Marketing Design",
+        "img": "[img]https://i.ibb.co/cC2r4Vw/marketing.jpg[/img]",
+        "price": "75.49",
+        "description": "Marketing design is the process of creation and iteration of visual assets, for the purpose of advertisement, branding and other promotional activities, whose goal is to improve a brand’s perception, visibility, and ultimately commercial success. Marketing design is a field in which graphic designers work, producing visual content and design elements in cooperation with marketing experts. They base their products on design principles, but also on a predefined set of rules and guidelines that define a brand identity. Sometimes designers also work on branding itself, but other times they are mostly focused on producing a type of content used to target audiences through advertising. The goal of marketing design is to attract audiences, while at the same time enforcing the brand identity through consistent messaging and visual language."
+    },
+    {
+        "title": "Visual Design",
+        "img": "[img]https://i.ibb.co/8PYN4Lh/visual.png[/img]",
+        "price": "124.99",
+        "description": "In branding and marketing, visual design is everything. The first impression the visual aspect of your brand makes, can stick in viewers’ memories for a long time, and sway their perception of your company for better or worse. Of course, marketing is a complex and multifaceted process in which marketers, art directors, content and copywriters and designers work daily. But, no matter how good an idea is, if it doesn’t look good, it most likely won’t be successful. That is the exact reason why marketing materials should be well thought out, creative, and most importantly well designed. And Graphics Bari will do the hard work for you."
+    },
+    {
+        "title": "Package & Cover Design",
+        "img": "[img]https://i.ibb.co/q1LB8JY/package.jpg[/img]",
+        "price": "65.00",
+        "description": "Your packaging is the material that contains your product. Packaging design is the process that allows your packaging to fulfil a wide range of functions. It has to be functional, holding your product, enabling it to be transported and stored. It needs to stand out from your competitors’ packaging in some way, as well as appeal to customers in-store and online. Great packaging appeals to the eye, the brain and the emotions. It stands out on the shelves. It states all the necessary features and benefits. It is also a reflection of the company brand. If you make all those connections in a few split-seconds, you can win over a customer for potentially a very long time."
+    },
+    {
+        "title": "Product Design",
+        "img": "[img]https://i.ibb.co/58FxQkN/Product-Design.jpg[/img]",
+        "price": "35.49",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!"
+    },
+    {
+        "title": "Web & App Design",
+        "img": "[img]https://i.ibb.co/Ytgt1Vd/web-design.png[/img]",
+        "price": "149.99",
+        "description": "Web and App design combines the user interface (UI) and user experience (UX). While UI lends itself to the overall style of the app (including the colors, fonts, and general look and feel), UX focuses on the actual functionality and usability. A large number of users abandon an app after using it for the first time. Web Design and Applications involve the standards for building and Rendering Web pages, including HTML, CSS, SVG, device APIs, and other technologies for Web Applications (“WebApps”). Web applications and websites play an essential role in marketing communication and branding. While content is significant, the UX and UI design can be a dealbreaker within the first 20 seconds. The design will create the very first impression, be the first chance for a buy-in, and help you build customer trust. "
+    }
+]

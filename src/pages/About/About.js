@@ -3,7 +3,7 @@ import img from '../../assets/about/about_me.svg'
 
 const About = () => {
     return (
-        <div className="max-w-screen-xl mx-auto min-h-screen">
+        <div className="max-w-screen-xl mx-auto">
             <div className="flex justify-center items-center p-10 gap-16 lg:p-20 flex-col md:flex-row">
                 <div className='md:w-1/2'>
                     <img src={img} className="w-full lg:max-w-md rounded-lg shadow-2xl" alt='' />
