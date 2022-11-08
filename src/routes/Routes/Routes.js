@@ -5,6 +5,7 @@ import HomeItems from '../../pages/Home/HomeItems/HomeItems';
 import Login from '../../pages/Login/Login';
 import Blog from '../../pages/Blog/Blog';
 import Signup from '../../pages/Signup/Signup';
+import About from '../../pages/About/About';
 
 export const routes = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             },
             {
                 path: '/login',
