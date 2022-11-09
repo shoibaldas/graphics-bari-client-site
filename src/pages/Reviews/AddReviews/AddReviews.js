@@ -30,17 +30,25 @@ const AddReviews = () => {
 
     const handleReview = (event) => {
         event.preventDefault();
+        const currDate = new Date().toLocaleDateString();
+        const currTime = new Date().toLocaleTimeString();
+        const time = `${currDate} ${currTime}`
         const message = event.target.message.value;
         const email = user?.email || 'unregistered';
         const userId = user?.uid;
-        
-        const addReview = {
+        const userName = user?.displayName;
 
+        const userImage = user?.photoURL;
+
+        const addReview = {
             serviceId: _id,
             serviceName: title,
             userId,
+            userName,
+            userImage,
             email,
             message,
+            time
 
         }
         fetch('http://localhost:5000/reviews', {

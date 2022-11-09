@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { useLoaderData } from 'react-router-dom';
 import AddReviews from '../Reviews/AddReviews/AddReviews';
+import AllReviews from '../Reviews/AllReviews/AllReviews';
 
 
 const ServiceDetails = () => {
     const service = useLoaderData();
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [])
+
+    const reviewAll = reviews.filter(rev => rev.serviceId === service._id)
+    console.log(reviews, reviewAll)
+
     return (
         <div className=''>
             <div className="max-w-screen-lg mx-auto p-4 rounded-md shadow-md">
@@ -31,6 +43,11 @@ const ServiceDetails = () => {
                 </div>
                 <h3 className='text-3xl font-semibold mt-12'>Reviews</h3>
                 <div className='border-t-2 border-gray-400'></div>
+                <div>
+                    {
+                        reviewAll.map(feed => <AllReviews key={feed._id} feed={feed}></AllReviews>)
+                    }
+                </div>
                 <AddReviews></AddReviews>
             </div>
 
