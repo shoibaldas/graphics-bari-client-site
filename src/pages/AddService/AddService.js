@@ -5,16 +5,20 @@ const AddService = () => {
 
     const handleAddService = (event) => {
         event.preventDefault();
+        const currDate = new Date().toLocaleDateString();
+        const currTime = new Date().toLocaleTimeString();
+        const time = `${currDate} ${currTime}`;
         const title = event.target.title.value;
-        const image = event.target.file.value;
+        const img = event.target.file.value;
         const price = event.target.price.value;
-        const message = event.target.message.value;
+        const description = event.target.description.value;
 
         const service = {
             title,
-            image,
+            img,
             price,
-            message
+            description,
+            time
         }
 
         fetch('http://localhost:5000/services', {
@@ -47,7 +51,7 @@ const AddService = () => {
                             </div>
                         </div>
                         <div className='flex flex-col w-full'>
-                            <textarea className='input input-bordered p-3 h-32' name='message' placeholder='Description' required></textarea>
+                            <textarea className='input input-bordered p-3 h-32' name='description' placeholder='Description' required></textarea>
                         </div>
                         <div className="form-control mt-4">
                             <button type="submit" className="bg-sky-700 text-gray-50 font-semibold hover:bg-sky-800 py-3 rounded-md">Add Service</button>
