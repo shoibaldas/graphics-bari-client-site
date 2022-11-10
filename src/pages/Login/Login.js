@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
 import TitleHeader from '../../titleHeader/TitleHeader';
+import Jwt from '../../jwtToken/JwtToken';
 
 const Login = () => {
     TitleHeader('Login');
@@ -21,9 +22,10 @@ const Login = () => {
 
     const googleSignIn = () => {
         providerSignin(googleProvider)
-            .then(data => {
+            .then(result => {
+                const user = result.user;
+                Jwt(user);
                 toast.success('Login Successfully!');
-                localStorage.setItem("service-user-token", data.token);
                 navigate(from, { replace: true });
 
             })
@@ -40,23 +42,8 @@ const Login = () => {
                 event.target.reset();
                 setError('');
                 const user = result.user;
-                const currentUser = {
-                    email: user.email
-                }
-                console.log(currentUser);
-                fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem("service-user-token", data.token);
-                        navigate(from, { replace: true });
-                    })
+                Jwt(user);
+                navigate(from, { replace: true });
             })
             .catch(error => { setError(error.message) })
     }
@@ -109,20 +96,20 @@ const Login = () => {
                                     <p className='text-red-700 text-sm'>{error}</p>
                                 </div>
                                 <div className="form-control mt-4">
-                                    <button type="submit" className="bg-violet-600 font-semibold text-gray-50 hover:bg-violet-700 py-2 rounded-md">Sign in</button>
+                                    <button type="submit" className="bg-sky-600 font-semibold text-gray-50 hover:bg-sky-700 py-2 rounded-md">Sign in</button>
                                 </div>
                                 <div>
-                                    <h5 className='label-text-alt'>Don't have any account?<Link to='/signup' className='text-violet-600 link link-hover font-semibold hover:text-violet-700'> Signup</Link></h5>
+                                    <h5 className='label-text-alt'>Don't have any account?<Link to='/signup' className='text-sky-600 link link-hover font-semibold hover:text-sky-700'> Signup</Link></h5>
                                 </div>
                                 <div className='text-center mt-4'>
                                     <div className='flex items-center space-x-3'>
-                                        <div className="flex-1 h-px sm:w-16 dark:bg-violet-600"></div>
+                                        <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
                                         <h4 className='label-text-alt font-semibold text-gray-500'>or Sign in with</h4>
-                                        <div className="flex-1 h-px sm:w-16 dark:bg-violet-600"></div>
+                                        <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
                                     </div>
                                     <div className='mt-2 flex justify-center'>
-                                        <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 mr-3 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
-                                        <DiGithubAlt className='w-8 h-8 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></DiGithubAlt>
+                                        <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
+
                                     </div>
                                 </div>
                             </form>

@@ -14,7 +14,6 @@ const UpdateReviews = () => {
     TitleHeader('Update Feeback');
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-    const data = useLoaderData();
     const { id } = useParams();
     const [myReviews, setMyReviews] = useState([]);
     const [currentValue, setCurrentValue] = useState(0);
@@ -34,7 +33,11 @@ const UpdateReviews = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('service-user-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [id])
@@ -97,7 +100,7 @@ const UpdateReviews = () => {
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
-                        <textarea className='input input-bordered p-3 h-32 text-gray-800' name='message' defaultValue={data.message} required></textarea>
+                        <textarea className='input input-bordered p-3 h-32 text-gray-800' name='message' defaultValue={myReviews.message} required></textarea>
                         <div className="form-control mt-4">
                             <button type="submit" className="bg-sky-700 text-gray-50 font-semibold hover:bg-sky-800 py-3 rounded-md">Add Review</button>
                         </div>

@@ -4,20 +4,36 @@ import { useLoaderData } from 'react-router-dom';
 import TitleHeader from '../../titleHeader/TitleHeader';
 import AddReviews from '../Reviews/AddReviews/AddReviews';
 import AllReviews from '../Reviews/AllReviews/AllReviews';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 
 const ServiceDetails = () => {
     TitleHeader('Service Details');
     const service = useLoaderData();
     const [reviews, setReviews] = useState([]);
+    const [fill, setFill] = useState([]);
+    const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`)
+        fetch(`http://localhost:5000/reviews`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('service-user-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
+            .then(data => {
 
-    const reviewAll = reviews.filter(rev => rev.serviceId === service._id)
+                setReviews(data)
+                if (reviews) {
+                    const reviewAll = reviews.filter(rev => rev.serviceId === service._id)
+                    setFill(reviewAll);
+                    setSpinner(false);
+                }
+
+            })
+    }, [reviews, spinner, service._id])
+
     return (
         <div className=''>
             <div className="max-w-screen-lg mx-auto p-4 rounded-md shadow-md">
@@ -26,7 +42,12 @@ const ServiceDetails = () => {
                 </div>
                 <div className="space-y-1">
                     <div className="space-y-2">
-                        <img src={service.img} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
+                        <PhotoProvider>
+                            <PhotoView src={service.img}>
+                                <img src={service.img} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
+                            </PhotoView>
+                        </PhotoProvider>
+
                         <div className="p-2 border-t-2 border-sky-700">
                             <div className="flex items-center space-x-1">
                                 <TbCurrencyTaka className='text-green-500'></TbCurrencyTaka>
@@ -45,7 +66,7 @@ const ServiceDetails = () => {
                 <div className='border-t-2 border-gray-400'></div>
                 <div>
                     {
-                        reviewAll.map(feed => <AllReviews key={feed._id} feed={feed}></AllReviews>)
+                        fill.map(feed => <AllReviews key={feed._id} feed={feed}></AllReviews>)
                     }
                 </div>
                 <AddReviews></AddReviews>

@@ -55,11 +55,6 @@ const Header = () => {
                                     }
                                 </label>
                                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                                    <li>
-                                        <a href='/' className="justify-between">
-                                            Profile
-                                        </a>
-                                    </li>
                                     <li><Link to='/addservice'>Add Service</Link></li>
                                     <li><Link to='/myreviews'>My Reviews</Link></li>
                                     <li><Link onClick={handleLogOut}>Logout</Link></li>
@@ -67,7 +62,7 @@ const Header = () => {
                             </div>
                         </>
                         :
-                        <Link to='/login' className="rounded px-6 py-2 font-semibold bg-violet-600 text-gray-50 hover:bg-violet-700 ease-in duration-200">Login</Link>
+                        <Link to='/login' className="rounded px-6 py-2 font-semibold bg-sky-600 text-gray-50 hover:bg-sky-700 ease-in duration-200">Login</Link>
                     }
                 </div>
             </div>

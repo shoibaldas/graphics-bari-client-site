@@ -138,16 +138,16 @@ const Signup = () => {
                             </div>
                             <p className='text-red-700 text-sm'>{error}</p>
                             <div className="form-control mt-4">
-                                <button type="submit" className="bg-violet-600 font-semibold text-gray-50 hover:bg-violet-700 py-2 rounded-md">Sign up</button>
+                                <button type="submit" className="bg-sky-600 font-semibold text-gray-50 hover:bg-sky-700 py-2 rounded-md">Sign up</button>
                             </div>
                             <div>
-                                <h5 className='label-text-alt'>Already have an account?<Link to='/login' className='text-violet-600 link link-hover font-semibold hover:text-violet-700'> Sign in</Link></h5>
+                                <h5 className='label-text-alt'>Already have an account?<Link to='/login' className='text-sky-600 link link-hover font-semibold hover:text-sky-700'> Sign in</Link></h5>
                             </div>
                             <div className='text-center mt-4'>
                                 <div className='flex items-center space-x-3'>
-                                    <div className="flex-1 h-px sm:w-16 dark:bg-violet-600"></div>
+                                    <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
                                     <h4 className='label-text-alt font-semibold text-gray-500'>or Sign up with</h4>
-                                    <div className="flex-1 h-px sm:w-16 dark:bg-violet-600"></div>
+                                    <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
                                 </div>
                                 <div className='mt-2 flex justify-center'>
                                     <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 mr-3 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
