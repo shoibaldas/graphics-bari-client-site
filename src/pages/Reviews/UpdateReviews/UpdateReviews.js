@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import { useLoaderData, useParams } from 'react-router-dom';
+import { Navigate, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
-
+import toast from 'react-hot-toast';
 const colors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9"
@@ -10,6 +10,7 @@ const colors = {
 };
 
 const UpdateReviews = () => {
+    const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
     const { id } = useParams();
@@ -57,7 +58,13 @@ const UpdateReviews = () => {
             body: JSON.stringify(update)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('You have successfull updated your previous feedback.');
+                    event.target.reset();
+                    navigate('/myreviews');
+                }
+            })
             .catch(error => (error.message));
     }
 

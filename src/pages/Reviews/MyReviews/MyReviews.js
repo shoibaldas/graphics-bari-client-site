@@ -1,16 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import ReviewData from './ReviewData';
+import toast from 'react-hot-toast';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/reviews`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('service-user-token')}`,
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => setMyReviews(data))
-    }, [])
+    }, [logOut])
 
     const reviewGet = myReviews.filter(rev => rev.userId === user?.uid)
 
@@ -23,7 +34,7 @@ const MyReviews = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('Successfully Removed');
+                        toast.success('Review deletation is success.');
                         const remain = reviewGet.filter(reviewItem => reviewItem._id !== id);
                         setMyReviews(remain);
                     }
@@ -32,7 +43,7 @@ const MyReviews = () => {
     }
 
     const handleEdit = () => {
-       
+
 
 
     }
@@ -61,7 +72,7 @@ const MyReviews = () => {
                         }
                     </tbody>
                 </table>
-                
+
             </div>
         </div>
     );

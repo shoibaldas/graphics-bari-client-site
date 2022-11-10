@@ -1,15 +1,21 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GrGooglePlus } from "react-icons/gr";
 import { DiGithubAlt } from "react-icons/di";
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthProvider';
-import img from '../../assets/signUp/sign_in.svg'
+import img from '../../assets/signUp/sign_in.svg';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
     const [hidePassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const { createUser, providerLogin, updateUserProfile, setSignIn, logOut } = useContext(AuthContext);
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
     const googleSignIn = () => {
@@ -39,7 +45,9 @@ const Signup = () => {
                 event.target.reset();
                 setError('');
                 handleUpdateUserProfile(name, url);
-                logOut()
+                toast.success("Account successfully created. Please Verify your email.")
+                navigate(from, { replace: true });
+                logOut();
 
             })
             .catch(error => {

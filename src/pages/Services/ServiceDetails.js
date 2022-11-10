@@ -16,8 +16,6 @@ const ServiceDetails = () => {
     }, [])
 
     const reviewAll = reviews.filter(rev => rev.serviceId === service._id)
-    console.log(reviews, reviewAll)
-
     return (
         <div className=''>
             <div className="max-w-screen-lg mx-auto p-4 rounded-md shadow-md">

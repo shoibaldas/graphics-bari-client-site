@@ -1,7 +1,9 @@
 import React from 'react';
 import img from '../../assets/service/add_files.svg';
+import toast from 'react-hot-toast';
 
 const AddService = () => {
+
 
     const handleAddService = (event) => {
         event.preventDefault();
@@ -29,7 +31,10 @@ const AddService = () => {
             body: JSON.stringify(service)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                event.target.reset();
+                toast.success("Your added a service successfully.");
+            })
             .catch(error => (error.message));
     }
 

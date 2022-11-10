@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const colors = {
     orange: "#FFBA5A",
@@ -14,7 +15,7 @@ const AddReviews = () => {
     const { _id, title } = useLoaderData();
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
-    const stars = Array(5).fill(0)
+    const stars = Array(5).fill(0);
 
     const handleClick = value => {
         setCurrentValue(value)
@@ -27,6 +28,7 @@ const AddReviews = () => {
     const handleMouseLeave = () => {
         setHoverValue(undefined)
     }
+
 
     const handleReview = (event) => {
         event.preventDefault();
@@ -59,7 +61,11 @@ const AddReviews = () => {
             body: JSON.stringify(addReview)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                toast.success("Your Feedback is successfully submitted.");
+
+                event.target.reset();
+            })
             .catch(error => (error.message));
     }
 

@@ -28,7 +28,10 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
-
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser === null || currentUser) {
@@ -39,7 +42,7 @@ const AuthProvider = ({ children }) => {
         return () => unSubscribe;
     }, [])
 
-    const authInfo = { user, loading, createUser, updateUserProfile, providerSignin, signInUser};
+    const authInfo = { user, loading, createUser, updateUserProfile, providerSignin, signInUser, logOut };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
