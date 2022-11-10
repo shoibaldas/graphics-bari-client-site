@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { useLoaderData } from 'react-router-dom';
+import TitleHeader from '../../titleHeader/TitleHeader';
 import AddReviews from '../Reviews/AddReviews/AddReviews';
 import AllReviews from '../Reviews/AllReviews/AllReviews';
 
 
 const ServiceDetails = () => {
+    TitleHeader('Service Details');
     const service = useLoaderData();
     const [reviews, setReviews] = useState([]);
 

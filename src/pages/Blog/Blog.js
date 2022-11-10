@@ -3,6 +3,7 @@ import img1 from '../../assets/blogImages/sqlNoSql.png';
 import img2 from '../../assets/blogImages/jwt.png';
 import img3 from '../../assets/blogImages/javascript-and-node-js.jpg';
 import img4 from '../../assets/blogImages/handel-request.png';
+import TitleHeader from '../../titleHeader/TitleHeader';
 
 const blogItem = [
     {
@@ -32,6 +33,8 @@ const blogItem = [
 ]
 
 const Blog = () => {
+
+    TitleHeader('Blog');
 
     return (
         <section className=" dark:text-gray-100">

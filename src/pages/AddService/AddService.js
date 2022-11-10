@@ -1,9 +1,11 @@
 import React from 'react';
 import img from '../../assets/service/add_files.svg';
 import toast from 'react-hot-toast';
+import TitleHeader from '../../titleHeader/TitleHeader';
 
 const AddService = () => {
 
+    TitleHeader('Add Service');
 
     const handleAddService = (event) => {
         event.preventDefault();

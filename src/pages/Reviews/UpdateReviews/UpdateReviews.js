@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { Navigate, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import TitleHeader from '../../../titleHeader/TitleHeader';
 const colors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9"
@@ -10,6 +11,7 @@ const colors = {
 };
 
 const UpdateReviews = () => {
+    TitleHeader('Update Feeback');
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const data = useLoaderData();

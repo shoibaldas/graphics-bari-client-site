@@ -6,8 +6,10 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/signUp/sign_in.svg';
 import toast from 'react-hot-toast';
+import TitleHeader from '../../titleHeader/TitleHeader';
 
 const Signup = () => {
+    TitleHeader('Sign up')
     const [hidePassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const { createUser, providerLogin, updateUserProfile, setSignIn, logOut } = useContext(AuthContext);

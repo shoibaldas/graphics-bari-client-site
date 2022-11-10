@@ -6,8 +6,10 @@ import { DiGithubAlt } from "react-icons/di";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import TitleHeader from '../../titleHeader/TitleHeader';
 
 const Login = () => {
+    TitleHeader('Login');
     const [hidePassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const { signInUser, providerSignin } = useContext(AuthContext);

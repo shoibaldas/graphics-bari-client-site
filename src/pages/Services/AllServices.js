@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import TitleHeader from '../../titleHeader/TitleHeader';
 import ServicesItems from './ServiceItems';
 
 const AllServices = () => {
+    TitleHeader('All Services');
     const [services, setServices] = useState([]);
 
     useEffect(() => {
