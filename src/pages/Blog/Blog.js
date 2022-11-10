@@ -4,6 +4,8 @@ import img2 from '../../assets/blogImages/jwt.png';
 import img3 from '../../assets/blogImages/javascript-and-node-js.jpg';
 import img4 from '../../assets/blogImages/handel-request.png';
 import TitleHeader from '../../titleHeader/TitleHeader';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const blogItem = [
     {
@@ -40,13 +42,17 @@ const Blog = () => {
         <section className=" dark:text-gray-100">
             <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                 {
-                    blogItem.map(blog => <a key={blog.id} blog={blog} rel="noopener noreferrer" href="/" className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
-                        <img src={blog.image} alt="" className="object-fit md:object-cover w-full h-64 sm:h-96 lg:col-span-7" />
+                    blogItem.map(blog => <div key={blog.id} blog={blog} className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
+                        <PhotoProvider>
+                            <PhotoView src={blog.image}>
+                                <img src={blog.image} alt="" className="object-fit md:object-cover w-full h-64 sm:h-96 lg:col-span-7" />
+                            </PhotoView>
+                        </PhotoProvider>
                         <div className="p-6 space-y-2 lg:col-span-5">
                             <h3 className="text-2xl font-semibold sm:text-4xl">{blog.title}</h3>
                             <p>{blog.ans}</p>
                         </div>
-                    </a>)
+                    </div>)
                 }
             </div>
         </section>

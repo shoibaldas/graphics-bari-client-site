@@ -19,7 +19,7 @@ const CarouselItems = ({ slide }) => {
                 <p className='text-sm text-gray-200 w-full md:w-3/5'>{info}</p>
             </div>
             <div className="absolute flex justify-start transform -translate-y-1/2 left-5 mt-2 md:mt-0 md:left-10 top-3/4 md:top-2/3">
-                <button className="rounded px-2 py-1 md:px-4 md:py-2 border-orange-600 text-gray-100 font-semibold bg-orange-600 hover:bg-orange-700 ease-in duration-200 mr-5">Discover More</button>
+                <button className="rounded px-2 py-1 md:px-4 md:py-2  text-gray-100 font-semibold bg-sky-600 hover:bg-sky-700 ease-in duration-200 mr-5">Discover More</button>
             </div>
         </div >
     );
