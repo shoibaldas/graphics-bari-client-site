@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import { Navigate, useLoaderData, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthProvider';
+import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import TitleHeader from '../../../titleHeader/TitleHeader';
 const colors = {
@@ -13,7 +12,7 @@ const colors = {
 const UpdateReviews = () => {
     TitleHeader('Update Feeback');
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+
     const { id } = useParams();
     const [myReviews, setMyReviews] = useState([]);
     const [currentValue, setCurrentValue] = useState(0);

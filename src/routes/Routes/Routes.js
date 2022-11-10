@@ -12,11 +12,13 @@ import AllServices from '../../pages/Services/AllServices';
 import ServiceDetails from '../../pages/Services/ServiceDetails';
 import MyReviews from '../../pages/Reviews/MyReviews/MyReviews';
 import UpdateReviews from '../../pages/Reviews/UpdateReviews/UpdateReviews';
+import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 
 export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -44,7 +46,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/services/:id/details',
-                element: <PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
+                element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
