@@ -32,7 +32,7 @@ const UpdateReviews = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://graphics-service-app-server.vercel.app/reviews/${id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('service-user-token')}`
             }
@@ -54,7 +54,7 @@ const UpdateReviews = () => {
             message,
             time
         }
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://graphics-service-app-server.vercel.app/reviews/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

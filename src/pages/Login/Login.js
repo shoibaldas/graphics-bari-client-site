@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import img from '../../assets/login/login.svg';
 import { GrGooglePlus } from "react-icons/gr";
 import { DiGithubAlt } from "react-icons/di";
@@ -19,9 +19,22 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
 
     const googleSignIn = () => {
         providerSignin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                Jwt(user);
+                toast.success('Login Successfully!');
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => { setError(error.message) })
+    }
+
+    const gitSignIn = () => {
+        providerSignin(gitHubProvider)
             .then(result => {
                 const user = result.user;
                 Jwt(user);
@@ -108,8 +121,8 @@ const Login = () => {
                                         <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
                                     </div>
                                     <div className='mt-2 flex justify-center'>
-                                        <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
-
+                                        <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 text-gray-700 mr-3 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
+                                        <DiGithubAlt onClick={gitSignIn} className='w-8 h-8 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></DiGithubAlt>
                                     </div>
                                 </div>
                             </form>

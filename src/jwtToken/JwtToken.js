@@ -3,7 +3,7 @@ const Jwt = (user) => {
         email: user.email
     }
     console.log(currentUser);
-    fetch('http://localhost:5000/jwt', {
+    fetch('https://graphics-service-app-server.vercel.app/jwt', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

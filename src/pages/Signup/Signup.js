@@ -1,8 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GrGooglePlus } from "react-icons/gr";
-import { DiGithubAlt } from "react-icons/di";
-import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/signUp/sign_in.svg';
 import toast from 'react-hot-toast';
@@ -12,19 +9,12 @@ const Signup = () => {
     TitleHeader('Sign up')
     const [hidePassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
-    const { createUser, providerLogin, updateUserProfile, setSignIn, logOut } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setSignIn, logOut } = useContext(AuthContext);
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
 
     const navigate = useNavigate();
-
-    const googleProvider = new GoogleAuthProvider();
-    const googleSignIn = () => {
-        providerLogin(googleProvider)
-            .then(result => { })
-            .catch(error => (error.message))
-    }
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -142,17 +132,6 @@ const Signup = () => {
                             </div>
                             <div>
                                 <h5 className='label-text-alt'>Already have an account?<Link to='/login' className='text-sky-600 link link-hover font-semibold hover:text-sky-700'> Sign in</Link></h5>
-                            </div>
-                            <div className='text-center mt-4'>
-                                <div className='flex items-center space-x-3'>
-                                    <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
-                                    <h4 className='label-text-alt font-semibold text-gray-500'>or Sign up with</h4>
-                                    <div className="flex-1 h-px sm:w-16 dark:bg-sky-800"></div>
-                                </div>
-                                <div className='mt-2 flex justify-center'>
-                                    <GrGooglePlus onClick={googleSignIn} className='w-8 h-8 mr-3 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></GrGooglePlus>
-                                    <DiGithubAlt className='w-8 h-8 text-gray-700 cursor-pointer bg-gray-300 p-1 rounded-full'></DiGithubAlt>
-                                </div>
                             </div>
                         </form>
 

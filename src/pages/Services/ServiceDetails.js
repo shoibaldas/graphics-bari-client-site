@@ -16,7 +16,7 @@ const ServiceDetails = () => {
     const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://graphics-service-app-server.vercel.app/reviews`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('service-user-token')}`
             }
