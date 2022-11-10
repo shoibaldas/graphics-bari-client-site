@@ -26,8 +26,8 @@ const Header = () => {
             <div className="navbar p-4 h-24 mb-8 bg-base-100">
                 <div className="flex-1">
                     <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <i className="fa-solid fa-bars"></i>
+                        <label tabIndex={0} className="lg:hidden">
+                            <i className="fa-solid w-8 h-8 fa-bars"></i>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             {menuItems}
@@ -50,8 +50,12 @@ const Header = () => {
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
                                     {
                                         user?.uid ?
-                                            <img className='w-10 rounded-full' src={user?.photoURL} alt='' /> :
-                                            <FaUserAlt className='bg-violet-800'></FaUserAlt>
+                                            <>
+                                                <img className='w-10 rounded-full' src={user?.photoURL} alt='' />
+                                                <i class="fa-solid w-8 h-4 font-bold fa-angle-down"></i>
+                                            </>
+                                            :
+                                            <FaUserAlt className='bg-gray-500'></FaUserAlt>
                                     }
                                 </label>
                                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">

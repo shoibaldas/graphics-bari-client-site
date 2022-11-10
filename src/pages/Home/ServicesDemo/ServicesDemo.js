@@ -27,7 +27,7 @@ const ServicesDemo = () => {
         )
     }
     return (
-        <div>
+        <div id='services'>
             <div className='flex flex-col items-center'>
                 <h5 className='text-xl font-bold text-sky-700'>Services</h5>
                 <h2 className='text-3xl font-bold'>Our Service Categories</h2>

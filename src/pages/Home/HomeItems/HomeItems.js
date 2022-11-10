@@ -5,6 +5,7 @@ import FaqPage from '../FaqPage/FaqPage';
 import ServicesDemo from '../ServicesDemo/ServicesDemo';
 
 const HomeItems = () => {
+
     return (
         <div>
             <Banner></Banner>

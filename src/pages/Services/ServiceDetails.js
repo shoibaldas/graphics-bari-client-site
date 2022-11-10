@@ -16,6 +16,10 @@ const ServiceDetails = () => {
     const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         fetch(`https://graphics-service-app-server.vercel.app/review`)
             .then(res => res.json())
             .then(data => {

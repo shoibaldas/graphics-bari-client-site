@@ -16,11 +16,9 @@ const AddReviews = () => {
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const stars = Array(5).fill(0);
-    const location = useLocation();
     const navigate = useNavigate();
 
 
-    const from = location.state?.from?.pathname || '/';
     const handleClick = value => {
         setCurrentValue(value)
     }
