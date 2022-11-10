@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import toast from 'react-hot-toast';
 
@@ -16,7 +16,11 @@ const AddReviews = () => {
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const stars = Array(5).fill(0);
+    const location = useLocation();
+    const navigate = useNavigate();
 
+
+    const from = location.state?.from?.pathname || '/';
     const handleClick = value => {
         setCurrentValue(value)
     }
@@ -32,41 +36,47 @@ const AddReviews = () => {
 
     const handleReview = (event) => {
         event.preventDefault();
-        const currDate = new Date().toLocaleDateString();
-        const currTime = new Date().toLocaleTimeString();
-        const time = `${currDate} ${currTime}`;
-        const message = event.target.message.value;
-        const email = user?.email || 'unregistered';
-        const userId = user?.uid;
-        const userName = user?.displayName;
+        if (user && user?.uid) {
+            const currDate = new Date().toLocaleDateString();
+            const currTime = new Date().toLocaleTimeString();
+            const time = `${currDate} ${currTime}`;
+            const message = event.target.message.value;
+            const email = user?.email || 'unregistered';
+            const userId = user?.uid;
+            const userName = user?.displayName;
 
-        const userImage = user?.photoURL;
+            const userImage = user?.photoURL;
 
-        const addReview = {
-            serviceId: _id,
-            serviceName: title,
-            userId,
-            userName,
-            userImage,
-            email,
-            message,
-            time
+            const addReview = {
+                serviceId: _id,
+                serviceName: title,
+                userId,
+                userName,
+                userImage,
+                email,
+                message,
+                time
 
-        }
-        fetch('http://localhost:5000/reviews', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(addReview)
-        })
-            .then(response => response.json())
-            .then(data => {
-                toast.success("Your Feedback is successfully submitted.");
-
-                event.target.reset();
+            }
+            fetch('http://localhost:5000/reviews', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(addReview)
             })
-            .catch(error => (error.message));
+                .then(response => response.json())
+                .then(data => {
+                    toast.success("Your Feedback is successfully submitted.");
+
+                    event.target.reset();
+                })
+                .catch(error => (error.message));
+        }
+        else {
+            navigate('/login');
+        }
+
     }
 
     return (

@@ -8,6 +8,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [signIn, setSignIn] = useState({});
 
     const providerSignin = (provider) => {
         setLoading(true);
@@ -40,9 +41,9 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         })
         return () => unSubscribe;
-    }, [])
+    }, [signIn])
 
-    const authInfo = { user, loading, createUser, updateUserProfile, providerSignin, signInUser, logOut };
+    const authInfo = { user, loading, setSignIn, createUser, updateUserProfile, providerSignin, signInUser, logOut };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
