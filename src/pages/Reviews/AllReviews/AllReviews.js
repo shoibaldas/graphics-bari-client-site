@@ -2,6 +2,7 @@ import React from 'react';
 
 const AllReviews = ({ feed }) => {
     const { userName, userImage, time, message } = feed;
+    
     return (
         <div className="container flex flex-col w-full md:w-9/12 p-6 divide-y rounded-md divide-gray-700 text-gray-700">
             <div className="flex justify-between p-4">

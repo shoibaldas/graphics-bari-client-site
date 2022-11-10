@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const colors = {
@@ -9,9 +9,11 @@ const colors = {
 
 };
 
-const AddReviews = () => {
+const UpdateReviews = () => {
     const { user } = useContext(AuthContext);
-    const { _id, title } = useLoaderData();
+    const data = useLoaderData();
+    const { id } = useParams();
+    const [myReviews, setMyReviews] = useState([]);
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const stars = Array(5).fill(0)
@@ -28,35 +30,31 @@ const AddReviews = () => {
         setHoverValue(undefined)
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${id}`)
+            .then(res => res.json())
+            .then(data => setMyReviews(data))
+    }, [id])
+
+    const { _id } = myReviews;
     const handleReview = (event) => {
         event.preventDefault();
         const currDate = new Date().toLocaleDateString();
         const currTime = new Date().toLocaleTimeString();
         const time = `${currDate} ${currTime}`;
         const message = event.target.message.value;
-        const email = user?.email || 'unregistered';
-        const userId = user?.uid;
-        const userName = user?.displayName;
 
-        const userImage = user?.photoURL;
 
-        const addReview = {
-            serviceId: _id,
-            serviceName: title,
-            userId,
-            userName,
-            userImage,
-            email,
+        const update = {
             message,
             time
-
         }
-        fetch('http://localhost:5000/reviews', {
-            method: 'POST',
+        fetch(`http://localhost:5000/reviews/${_id}`, {
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(addReview)
+            body: JSON.stringify(update)
         })
             .then(response => response.json())
             .then(data => console.log(data))
@@ -64,10 +62,10 @@ const AddReviews = () => {
     }
 
     return (
-        <div className='p-6'>
+        <div className='max-w-screen-sm mx-auto h-screen p-6'>
             <div className="flex flex-col max-w-xl p-8 border-2 rounded lg:p-10 text-gray-800">
                 <form onSubmit={handleReview} className="flex flex-col items-center w-full">
-                    <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                    <h2 className="text-3xl font-semibold text-sky-800 text-center">Update your Feedback!</h2>
                     <div className="flex flex-col items-center py-6 space-y-3">
                         <span className="text-center">How was your experience?</span>
                         <div className="flex space-x-3">
@@ -90,7 +88,7 @@ const AddReviews = () => {
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
-                        <textarea className='input input-bordered p-3 h-32' name='message' placeholder='Your Feedback' required></textarea>
+                        <textarea className='input input-bordered p-3 h-32 text-gray-800' name='message' defaultValue={data.message} required></textarea>
                         <div className="form-control mt-4">
                             <button type="submit" className="bg-sky-700 text-gray-50 font-semibold hover:bg-sky-800 py-3 rounded-md">Add Review</button>
                         </div>
@@ -101,4 +99,4 @@ const AddReviews = () => {
     );
 };
 
-export default AddReviews;
+export default UpdateReviews;
