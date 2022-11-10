@@ -16,14 +16,10 @@ const ServiceDetails = () => {
     const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
-        fetch(`https://graphics-service-app-server.vercel.app/reviews`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('service-user-token')}`
-            }
-        })
+        fetch(`https://graphics-service-app-server.vercel.app/review`)
             .then(res => res.json())
             .then(data => {
-
+                console.log(data)
                 setReviews(data)
                 if (reviews) {
                     const reviewAll = reviews.filter(rev => rev.serviceId === service._id)
