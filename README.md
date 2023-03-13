@@ -23,11 +23,11 @@ This project was bootstrapped with `ReactJs`, `Tailwind component CSS`, `React r
 
 ### Client Side
 
-Link: [ https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-shoibaldas]( https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-shoibaldas)
+Link: [ https://github.com/shoibaldas/graphics-bari-client-site]( https://github.com/shoibaldas/graphics-bari-client-site)
 
 ### Server Side
 
-Link: [https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-shoibaldas](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-shoibaldas)
+Link: [https://github.com/shoibaldas/graphics-bari-server-app](https://github.com/shoibaldas/graphics-bari-server-app)
 
 
 ### Deployment
